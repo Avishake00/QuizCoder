@@ -6,6 +6,7 @@ import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loader from '../Loader';
 
 
 
@@ -53,7 +54,9 @@ const SignInForm = () => {
 
   return (
     <CardWrapper
-      headerLabel={Loading?"Creating Account...":"Create account"}
+      headerLabel={Loading?
+        <Loader text={"Creating Account"}/>
+        :"Create account"}
       backButtonLable={'Already have an account!'}
       backButtonHref="/Login"
       showSocial

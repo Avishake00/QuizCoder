@@ -3,26 +3,24 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
 import axios from 'axios';
-import { useToast } from '../ui/use-toast';
+import toast from 'react-hot-toast';
 import { IoLogOut } from "react-icons/io5";
 
 const Logoutbutton = () => {
-    const {toast} =useToast();
     const router=useRouter();
     const handleOnclick=async()=>{
        try {
         await axios.get('/api/users/logout');
-        toast({
-            description:"Logout successful"
-        })
+        toast.success( "Welcome to Home Page",{
+          duration:3000
+        });
+        window.location.reload();
         router.push('/')
         
        } catch (error) {
         console.log(error.message);
-        toast({
-            variant: "destructive",
-            description: "Something error",
-            action: <ToastAction altText="Try again">Try again</ToastAction>,
+        toast.error("Something error!",{
+          duration:3000
         });
         
        }

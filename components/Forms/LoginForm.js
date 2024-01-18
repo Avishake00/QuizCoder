@@ -6,11 +6,10 @@ import { Input } from "../ui/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ToastAction } from "@/components/ui/toast";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+import Loader from "../Loader";
 // Define the SignInForm component
 const SignInForm = () => {
-	
-
 	const router = useRouter();
 	const [Loading, setLoading] = useState(false);
 	const [user, setuser] = useState({
@@ -29,13 +28,14 @@ const SignInForm = () => {
 			setLoading(true);
 			console.log("Form submitted:", user);
 			const res = await axios.post("/api/users/Login", user);
-			toast.success( "Login Successful",{
-				duration:3000
+			toast.success("Login Successful", {
+				duration: 3000,
 			});
+			window.location.reload();
 			router.push("/dashboard");
 		} catch (error) {
-			toast.error("Email or password is incorrect",{
-				duration:3000
+			toast.error("Email or password is incorrect", {
+				duration: 3000,
 			});
 			console.log("Login failed", error.message);
 		} finally {
@@ -45,7 +45,13 @@ const SignInForm = () => {
 
 	return (
 		<CardWrapper
-			headerLabel={Loading ? "Login..." : "Login"}
+			headerLabel={
+				Loading ? (
+				<Loader text={"Login"}/>
+				) : (
+					"Login"
+				)
+			}
 			backButtonLable={"Create an account!"}
 			backButtonHref="/Signup"
 			showSocial
