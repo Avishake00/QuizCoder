@@ -15,7 +15,7 @@ const Logoutbutton = () => {
           duration:3000
         });
         window.location.reload();
-        router.replace('/')
+        router.push('/')
         
        } catch (error) {
         console.log(error.message);
