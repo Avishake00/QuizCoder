@@ -5,9 +5,14 @@ export function middleware(request) {
   
     const path=request.nextUrl.pathname;//this is the path the we want to redirect
 
-    const isPublicPath=path ==='/Login' || path === '/Signup' 
+    const isPublicPath=path ==='/Login' || path === '/Signup' || path ==='/'
 
     const token =request.cookies.get('token') ?.value ||''
+
+     // If there is token available in the cookie and the user is trying to access '/' path,
+    // redirect to '/dashboard'
+  
+
     
     //if there is token available in the cookie and we want to move to signin of login then it will redirect to /dashboard
     if(isPublicPath && token){
@@ -22,6 +27,7 @@ export function middleware(request) {
 // See "Matching Paths" below to learn more
 export const config = {
   matcher:[
+    '/',
     '/Login',
     '/Signup',
     '/dashboard'

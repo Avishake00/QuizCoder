@@ -1,4 +1,4 @@
-import LoginForm from '@/components/Forms/LoginForm'
+import LoginForm from '@/components/Auth/Forms/LoginForm'
 import React from 'react'
 
   

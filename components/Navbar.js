@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaHome } from 'react-icons/fa';
-import LogoutButton from './buttons/Logoutbutton';
+import LogoutButton from './Auth/buttons/Logoutbutton';
 import axios from 'axios';
-import USerProfile from './profile';
+import USerProfile from './Auth/profile';
 // ... (imports and other code)
 
 const Navbar = () => {
